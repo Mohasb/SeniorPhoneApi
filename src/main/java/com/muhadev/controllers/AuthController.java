@@ -13,8 +13,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.muhadev.dto.UserDTO;
 import com.muhadev.entity.User;
 import com.muhadev.responses.SeniorApiResponse;
-import com.muhadev.responses.userResponses.SuccessUserResponse;
-import com.muhadev.responses.userResponses.ValidationErrorResponse;
 import com.muhadev.services.UserService;
 import com.muhadev.utils.JwtUtil;
 
@@ -41,8 +39,8 @@ public class AuthController {
 
 	@Operation(summary = "Registrar un nuevo usuario", description = "Este endpoint permite registrar un usuario proporcionando su email y contraseña.")
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "Usuario registrado con éxito", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessUserResponse.class))),
-			@ApiResponse(responseCode = "400", description = "Solicitud incorrecta, los datos no son válidos", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class))),
+			@ApiResponse(responseCode = "200", description = "Usuario registrado con éxito", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SeniorApiResponse.class))),
+			@ApiResponse(responseCode = "400", description = "Solicitud incorrecta, los datos no son válidos", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SeniorApiResponse.class))),
 			@ApiResponse(responseCode = "409", description = "El correo ya está registrado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SeniorApiResponse.class))),
 			@ApiResponse(responseCode = "500", description = "Error interno del servidor", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SeniorApiResponse.class))) })
 	@PostMapping("/register")
